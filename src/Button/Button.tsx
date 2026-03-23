@@ -1,8 +1,9 @@
 import { View, Text } from "react-native";
+import styles from "./Button.styles";
 const Button = (props) => {
   console.log(props)
   return (
-    <View>
+    <View style={styles.Button}>
       <Text>{props.children}</Text>
     </View>
   );
