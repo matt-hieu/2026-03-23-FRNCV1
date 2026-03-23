@@ -3,7 +3,7 @@ import styles from "./Button.styles";
 const Button = (props) => {
   console.log(props)
   return (
-    <View style={styles.Button}>
+    <View style={[styles.Button, {backgroundColor:props.bgColor}]}>
       <Text>{props.children}</Text>
     </View>
   );
