@@ -1,8 +1,9 @@
 import { View, Text } from "react-native";
 const Button = (props) => {
+  console.log(props)
   return (
     <View>
-      <Text>Benjamin</Text>
+      <Text>{props.text}</Text>
     </View>
   );
 };

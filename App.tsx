@@ -6,7 +6,10 @@ import Button from './src/Button/Button';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Button/>
+      <Button text="blabla">
+        <View><Text>Hello</Text></View>
+        <View><Text>De</Text></View>
+      </Button>
       <Text>Open up App.tsx to start working on your app!</Text>
       <StatusBar style="auto" />
     </View>
