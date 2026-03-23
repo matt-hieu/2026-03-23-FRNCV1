@@ -1,4 +1,5 @@
 import { View, Text, Pressable,ToastAndroid } from "react-native";
+import React from 'react'
 import styles from "./Button.styles";
 interface IButtonProps{
   children:string
@@ -6,7 +7,7 @@ interface IButtonProps{
   bgColor:"blue"|"red"
   onButtonPressed:()=>void
 }
-const Button = ({children, color, bgColor, onButtonPressed=()=>{}}:IButtonProps) => {
+const Button: React.FC<IButtonProps>= ({children, color, bgColor, onButtonPressed=()=>{}}) => {
   //console.log(props)
   return (
     <Pressable onPress={(evt)=>{
