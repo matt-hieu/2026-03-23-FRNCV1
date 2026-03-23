@@ -12,7 +12,7 @@ const Button: React.FC<IButtonProps>= ({children, color, bgColor, onButtonPresse
   return (
     <Pressable onPress={(evt)=>{
         //console.log(evt);
-        ToastAndroid.show("pressed", ToastAndroid.LONG);
+        //ToastAndroid.show("pressed", ToastAndroid.LONG);
         onButtonPressed()
     }} style={[styles.Button, {backgroundColor:bgColor}]}>
       <Text style={[styles.text,{color:color}]}>{children}</Text>
