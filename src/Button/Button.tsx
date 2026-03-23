@@ -1,6 +1,12 @@
 import { View, Text, Pressable,ToastAndroid } from "react-native";
 import styles from "./Button.styles";
-const Button = ({children, color, bgColor, onButtonPressed=()=>{}}) => {
+interface IButtonProps{
+  children:string
+  color?:"white"|"grey"
+  bgColor:"blue"|"red"
+  onButtonPressed:()=>void
+}
+const Button = ({children, color, bgColor, onButtonPressed=()=>{}}:IButtonProps) => {
   //console.log(props)
   return (
     <Pressable onPress={(evt)=>{

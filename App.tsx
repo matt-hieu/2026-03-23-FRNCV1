@@ -9,10 +9,10 @@ export default function App() {
       <Button bgColor="red" color="white" onButtonPressed={()=>{
         console.log('cancel');
       }} >Annuler</Button>
-      <Button bgColor="green" color="white" onButtonPressed={()=>{
+      <Button bgColor="blue" color="white" onButtonPressed={()=>{
         console.log('ok');
       }}>Ok</Button>
-      <Button bgColor="blue" color="white" >null button</Button>
+      <Button bgColor="blue" onButtonPressed={()=>{}} >null button</Button>
       <Text>Open up App.tsx to start working on your app!</Text>
       <StatusBar style="auto" />
     </View>
