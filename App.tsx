@@ -1,10 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Button from './src/Button/Button';
 
 export default function App() {
   const [counter,setCounter]=useState(0)
+  useEffect(()=>{
+    console.log('updated:',counter);
+  },[counter])
+  useEffect(()=>{
+    console.log('montage du composant');
+    return ()=>{
+      console.log('demontage du composant')
+    }
+  },[])
   return (
     <View style={styles.container}>
       <Text>valeur de counter : {counter}</Text>
