@@ -4,16 +4,18 @@ import React from 'react'
 import Button from './src/Button/Button';
 
 export default function App() {
+  let counter=0
   return (
     <View style={styles.container}>
+      <Text>valeur de counter : {counter}</Text>
       <Button bgColor="red" color="white" onButtonPressed={()=>{
-        console.log('cancel');
-      }} >Annuler</Button>
+        counter--;
+        console.log(counter)
+      }} >-1</Button>
       <Button bgColor="blue" color="white" onButtonPressed={()=>{
-        console.log('ok');
-      }}>Ok</Button>
-      <Button bgColor="blue" onButtonPressed={()=>{}} >null button</Button>
-      <Text>Open up App.tsx to start working on your app!</Text>
+        counter++;
+        console.log(counter);
+      }}>+1</Button>
       <StatusBar style="auto" />
     </View>
   );
