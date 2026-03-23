@@ -4,7 +4,7 @@ const Button = (props) => {
   console.log(props)
   return (
     <View style={[styles.Button, {backgroundColor:props.bgColor}]}>
-      <Text>{props.children}</Text>
+      <Text style={[styles.text,{color:props.color}]}>{props.children}</Text>
     </View>
   );
 };
