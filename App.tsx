@@ -1,9 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
+import ProductViewer from "./src/ProductViewer/ProductViewer";
+import { IProduct } from "./src/interfaces/IProducts";
 
 export default function App() {
-  const [products, setProducts] = useState<Array<object>>([]);
+  const [products, setProducts] = useState<Array<IProduct>>([]);
   useEffect(() => {
     fetch(
       `${
@@ -20,7 +22,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>{JSON.stringify(products)}</Text>
+      {products.length>0&&<ProductViewer product={products[0]}/>}
+      {/*<Text>{JSON.stringify(products)}</Text>*/}
     </View>
   );
 }
