@@ -3,10 +3,14 @@ import { IProduct } from '../interfaces/IProducts';
 interface IProductsSliceState{
     products:Array<IProduct>
     selectedProduct:undefined|IProduct
+    filtredProducts:Array<IProduct>
+    search:string
 }
 const initialState:IProductsSliceState = {
     products:[],
-    selectedProduct:undefined
+    filtredProducts:[],
+    selectedProduct:undefined,
+    search:''
 }
 
 const productsSlice = createSlice({
