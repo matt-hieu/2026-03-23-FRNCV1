@@ -1,8 +1,7 @@
-import { StatusBar } from "expo-status-bar";
-import { Dimensions, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import ProductViewer from "./src/components/ui/ProductViewer/ProductViewer";
 import { IProduct } from "./src/interfaces/IProducts";
+import ProductsListViewer from "./src/components/ui/ProductsListViewer/ProductsListViewer";
 
 export default function App() {
   const [products, setProducts] = useState<Array<IProduct>>([]);
@@ -19,25 +18,10 @@ export default function App() {
   return (
     <View style={{ flex: 1 }}>
       <ScrollView>
-        <View style={styles.container}>
-          {products.map((element, index) => {
-            return <ProductViewer key={element.id} product={element} />;
-          })}
-          {/*<Text>{JSON.stringify(products)}</Text>*/}
-        </View>
+        <ProductsListViewer products={products}/>
       </ScrollView>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-  },
-});
+const styles = StyleSheet.create({});
