@@ -7,7 +7,7 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { IProduct } from "../interfaces/IProducts";
+import { IProduct } from "../../../interfaces/IProducts";
 
 interface IProductViewerProps {
   product: IProduct;
