@@ -7,18 +7,11 @@ import {store} from './src/store/store'
 import { Provider } from "react-redux";
 import ProductsSearcher from "./src/components/functionnals/ProductsSearcher/ProductsSearcher.connected";
 export default function App() {
-  console.log(store);
-  const [search, setSearch] = useState("");
-  //const [selectedProduct, setselectedProduct] = useState<undefined|IProduct>(undefined)
   return (
     <Provider store={store}>
       <View style={{ flex: 1, }}>
         <Banner/>
-        <ProductsSearcher
-          onSearchChange={(str) => {
-            setSearch(str);
-          }}
-        />
+        <ProductsSearcher/>
         <ScrollView>
           <ProductsListViewer/>
         </ScrollView>
