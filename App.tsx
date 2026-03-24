@@ -22,7 +22,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {products.length>0&&<ProductViewer product={products[0]}/>}
+      {products.map((element,index)=>{
+          return <ProductViewer key={element.id} product={element}/>
+        })}
       {/*<Text>{JSON.stringify(products)}</Text>*/}
     </View>
   );
