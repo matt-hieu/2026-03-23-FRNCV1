@@ -1,34 +1,33 @@
 import { View, Text, TextInput, ScrollView } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IProduct } from "../../../interfaces/IProducts";
 import { styles } from "./ProductsSearcher.styles";
 import ProductsListViewer from "../../ui/ProductsListViewer/ProductsListViewer";
+import { store } from "../../../store/store";
 
 interface IProductsSearcherProps {
   products: Array<IProduct>;
+  searchField: string;
+  onSearchChange: (newValue: string) => void;
 }
 
-const ProductsSearcher = ({ products }: IProductsSearcherProps) => {
-  const [search, setSearch] = useState("");
-
+const ProductsSearcher = ({
+  products,
+  searchField,
+  onSearchChange,
+}: IProductsSearcherProps) => {
   return (
     <>
       <TextInput
         style={styles.fieldFind}
         placeholder="Recherche"
         placeholderTextColor={"grey"}
-        value={search}
+        value={searchField}
         onChangeText={(str) => {
-          setSearch(str);
+          //traitement sur la valeur avant remonté au parent
+          onSearchChange(str);
         }}
       />
-      <ScrollView>
-        <ProductsListViewer
-          products={products.filter((product) =>
-            product.titre.toLowerCase().includes(search.toLowerCase()),
-          )}
-        />
-      </ScrollView>
     </>
   );
 };
