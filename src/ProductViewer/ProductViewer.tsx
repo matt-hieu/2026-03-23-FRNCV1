@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { IProduct } from "../interfaces/IProducts";
 
@@ -9,7 +9,7 @@ interface IProductViewerProps {
 const ProductViewer = ({ product }: IProductViewerProps) => {
   return (
     <View style={styles.ProductViewer}>
-      <Text style={[styles.titre,styles.bold]}>{product.titre}</Text>
+      <Text style={[styles.titre, styles.bold]}>{product.titre}</Text>
       <View style={styles.colsFlex}>
         <View style={styles.colLeft}>
           <Text style={styles.stock}>stock:{product.stock}</Text>
@@ -18,6 +18,7 @@ const ProductViewer = ({ product }: IProductViewerProps) => {
           <Text style={styles.prix}>Prix:{product.prix}</Text>
         </View>
         <View style={styles.colRight}>
+          <Image style={styles.image} source={{ uri: product.imageUrl }} />
           <Button title="Edition" />
         </View>
       </View>
@@ -41,16 +42,21 @@ const styles = StyleSheet.create({
     textDecorationLine: "underline",
   },
   colsFlex: {
-    flexDirection:'row',
-    gap:5
+    flexDirection: "row",
+    gap: 5,
   },
   colLeft: {},
   colRight: {
-    justifyContent:'center'
+    justifyContent: "center",
+    gap:10
   },
   stock: {},
   descriptionLabel: {},
   description: {},
   prix: {},
-  bold:{fontWeight:900}
+  bold: { fontWeight: 900 },
+  image:{
+    width:200,
+    height:200
+  }
 });
