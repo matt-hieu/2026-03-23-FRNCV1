@@ -7,3 +7,9 @@ export const store=configureStore({
 store.subscribe(()=>console.trace(store.getState()))
 
 store.dispatch(initialProductLoad(products))
+
+
+
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

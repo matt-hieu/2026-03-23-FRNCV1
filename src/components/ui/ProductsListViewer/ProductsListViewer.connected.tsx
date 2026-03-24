@@ -3,12 +3,13 @@ import React from 'react'
 import ProductsListViewerUnconnected from './ProductsListViewer'
 import { useSelector, connect } from 'react-redux'
 import { IProduct } from '../../../interfaces/IProducts'
+import { AppDispatch, RootState } from '../../../store/store'
 type Props = {
     style?:any
 }
 
 const ProductsListViewer = (props: Props) => {
-  const products =useSelector((s:any)=>s.stock.products)
+  const products =useSelector((s:RootState)=>s.stock.filtredProducts)
   return (
     <ProductsListViewerUnconnected {...props} products={products}/>
   )
@@ -18,10 +19,10 @@ export default ProductsListViewer
 /*************************
  * Old version without Hooks (react<16.8)
  */
-function mapDispatchToProps(dispatch:Function){
+function mapDispatchToProps(dispatch:AppDispatch){
     return {}
 }
-function mapStateToProps(props:Props,state:any){
+function mapStateToProps(props:Props,state:RootState){
     return {
         ...props,
         products:state.stock.products as Array<IProduct>

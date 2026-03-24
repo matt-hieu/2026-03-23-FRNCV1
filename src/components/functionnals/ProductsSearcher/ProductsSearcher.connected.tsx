@@ -3,14 +3,15 @@ import React from "react";
 import ProductsSearcherUnconnected from "./ProductsSearcher";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { updateSearch } from "../../../store/productsSlice";
+import { AppDispatch, RootState } from "../../../store/store";
 type Props = {
   // onSearchChange:(search:string)=>void
 };
 
 const ProductsSearcher = (props: Props) => {
-  const products = useSelector((s: any) => s.stock.products);
+  const products = useSelector((s: RootState) => s.stock.products);
   const search = useSelector((s: any) => s.stock.search);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   return (
     <ProductsSearcherUnconnected
       {...props}
@@ -25,12 +26,12 @@ const ProductsSearcher = (props: Props) => {
 
 export default ProductsSearcher;
 
-function mapDispatchToProps(dispatch: Function) {
+function mapDispatchToProps(dispatch: AppDispatch) {
   return {
     onSearchChange:(str)=>dispatch(updateSearch(str))
   };
 }
-function mapStateToProps(props: Props, state: any) {
+function mapStateToProps(props: Props, state: RootState) {
   return {
     ...props,
     products: state.stock.products,
