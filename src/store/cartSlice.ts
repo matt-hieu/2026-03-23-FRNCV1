@@ -12,10 +12,11 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addProduct:(state, action:{type:string,payload:IProduct})=>{
+        const pr:IProduct={...action.payload}
         const position=state.products.findIndex(p=>p.id===action.payload.id)
         if(-1===position){
-            action.payload.quant=1
-            state.products.push(action.payload)
+            pr.quant=1
+            state.products.push(pr)
         }
         else{
             const p=state.products[position]
@@ -28,4 +29,5 @@ const cartSlice = createSlice({
 
 export const {addProduct} = cartSlice.actions
 
-export default cartSlice.reducer
+const cartReducer=cartSlice.reducer
+export default  cartReducer
