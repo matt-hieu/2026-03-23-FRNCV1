@@ -34,6 +34,18 @@ const productsSlice = createSlice({
       state.filtredProducts = state.products;
     },
   },
+  extraReducers: (builder) => {
+    // ecoute d'action provenant d'autres tranches
+    // builder.addCase('cart/addProduct',(s,a)=>{})
+    builder.addCase(loadRestAPI.fulfilled, (state, action) => {
+      //vidange
+      state.products.splice(0);
+      //remplissage avec chaque element contenu dans l'array un par un
+      state.products.push(...action.payload);
+      state.filtredProducts = state.products;
+      state.search = "";
+    });
+  },
 });
 
 export const { initialProductLoad, updateSearch } = productsSlice.actions;
