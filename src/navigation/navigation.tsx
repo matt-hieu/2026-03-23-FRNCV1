@@ -9,6 +9,7 @@ import cart from '../screens/cart'
 import CartIcon from '../components/ui/CartIcon/CartIcon.connected'
 import Banner from '../components/ui/Banner/Banner'
 import Cam from '../screens/Cam'
+import ScanIcon from '../components/ui/ScanIcon/ScanIcon'
 
 export type RootStackParams = {
     home:undefined
@@ -27,7 +28,8 @@ const Navigation = () => {
             headerShown:false,
         }}/>
         <Stack.Screen name='store' component={Store} options={{
-            headerRight:()=><CartIcon/>,
+            headerRight:()=><View style={{flexDirection:'row', gap:10}}
+            ><ScanIcon/><CartIcon/></View>,
             headerStyle:{
                 backgroundColor:'skyblue',
             },
