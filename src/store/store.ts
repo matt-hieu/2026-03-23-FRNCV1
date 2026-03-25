@@ -3,7 +3,7 @@ import productsReducer, { initialProductLoad, loadRestAPI } from "./productsSlic
 //import {products} from '../../db.json'
 import cartReducer from "./cartSlice";
 export const store=configureStore({
-  reducer:{stock:productsReducer,cart:cartReducer, demo:(s={},action)=>{console.log(action);return s;F}}
+  reducer:{stock:productsReducer,cart:cartReducer, demo:(s={},action)=>{console.log(action);return s;}}
 })
 store.subscribe(()=>console.trace(store.getState()))
 
