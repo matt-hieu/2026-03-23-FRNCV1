@@ -8,6 +8,7 @@ import { IProduct } from '../interfaces/IProducts'
 import cart from '../screens/cart'
 import CartIcon from '../components/ui/CartIcon/CartIcon.connected'
 import Banner from '../components/ui/Banner/Banner'
+import Cam from '../screens/Cam'
 
 export type RootStackParams = {
     home:undefined
@@ -15,12 +16,13 @@ export type RootStackParams = {
     pr:IProductEditorProps
     "new product":undefined
     cart:undefined
+    scan:undefined
 
 }
 const Stack=createNativeStackNavigator<RootStackParams>()
 const Navigation = () => {
   return (
-   <Stack.Navigator initialRouteName='home' >
+   <Stack.Navigator initialRouteName='scan' >
         <Stack.Screen name='home' component={Home} options={{
             headerShown:false,
         }}/>
@@ -34,8 +36,10 @@ const Navigation = () => {
             headerTitleAlign:'center'
             // headerTitle:()=><Banner/>
         }}/>
-         <Stack.Screen name='pr' component={ProductEditor}/>
         <Stack.Screen name='cart' component={cart}/>
+        <Stack.Screen name='scan' component={Cam}/>
+
+        <Stack.Screen name='pr' component={ProductEditor}/>
         <Stack.Screen name='new product' component={()=>{
             const pr:IProduct={description:'',imageUrl:'',prix:2,thumbnailUrl:'',titre:'', stock:0}
             return <ProductEditor product={pr} onProductSaved={()=>{}}/>
