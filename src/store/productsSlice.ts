@@ -17,6 +17,10 @@ const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+    searchByBarcode:(s,a:{type:string,payload:string})=>{
+      s.filtredProducts=s.products.filter(p=>p.cb===a.payload)
+      s.search=a.payload
+    },
     updateSearch: (state, action: { type: string; payload: string }) => {
       state.search = action.payload;
       state.filtredProducts = state.products.filter((p) =>
@@ -48,7 +52,7 @@ const productsSlice = createSlice({
   },
 });
 
-export const { initialProductLoad, updateSearch } = productsSlice.actions;
+export const { initialProductLoad, updateSearch, searchByBarcode } = productsSlice.actions;
 const productsReducer = productsSlice.reducer;
 export default productsReducer;
 
