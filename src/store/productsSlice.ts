@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IProduct } from "../interfaces/IProducts";
 interface IProductsSliceState {
   products: Array<IProduct>;
@@ -39,3 +39,16 @@ const productsSlice = createSlice({
 export const { initialProductLoad, updateSearch } = productsSlice.actions;
 const productsReducer = productsSlice.reducer;
 export default productsReducer;
+
+export const loadRestAPI = createAsyncThunk("products/loadAPI", async () => {
+  const pr = await fetch(
+    `${process.env.EXPO_PUBLIC_API_URL}:${process.env.EXPO_PUBLIC_API_PORT}${
+      process.env.EXPO_PUBLIC_API_ENDPOINT_PRODUCTS
+    }`,
+  );
+  return await pr.json();
+});
+// diferentes actions generer par le asyncthunk
+//products/loadAPI/pending
+//products/loadAPI/fulfilled
+//products/loadAPI/rejected
