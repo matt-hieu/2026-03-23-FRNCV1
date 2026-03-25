@@ -23,7 +23,7 @@ export type RootStackParams = {
 const Stack=createNativeStackNavigator<RootStackParams>()
 const Navigation = () => {
   return (
-   <Stack.Navigator initialRouteName='scan' >
+   <Stack.Navigator initialRouteName='home' >
         <Stack.Screen name='home' component={Home} options={{
             headerShown:false,
         }}/>
