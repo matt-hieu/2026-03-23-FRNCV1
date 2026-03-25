@@ -28,11 +28,14 @@
     },
     "plugins": [
       [
-        "expo-camera",
-        {
-          "cameraPermission": "L'application a besoin d'accéder à la caméra pour scanner les codes-barres des produits."
-        }
-      ]
+
+      "expo-camera",
+      {
+        "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+        "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+        "recordAudioAndroid": true
+      }
     ]
+  ]
   }
 }
