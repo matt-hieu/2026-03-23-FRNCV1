@@ -11,6 +11,18 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+    removeProduct:(state,action:{type:string,payload:IProduct})=>{
+        const position=state.products.findIndex(p=>p.id===action.payload.id)
+        if(position===-1)return;
+        if(undefined!==state.products[position].quant && state.products[position].quant>1){
+            state.products[position].quant--
+        }
+        else{
+            const tmpProductAfterRemoveElement=state.products.slice(position+1)
+            state.products.splice(position)
+            state.products.push(...tmpProductAfterRemoveElement)
+        }
+    },
     addProduct:(state, action:{type:string,payload:IProduct})=>{
         const pr:IProduct={...action.payload}
         const position=state.products.findIndex(p=>p.id===action.payload.id)
@@ -27,7 +39,7 @@ const cartSlice = createSlice({
   }
 });
 
-export const {addProduct} = cartSlice.actions
+export const {addProduct, removeProduct} = cartSlice.actions
 
 const cartReducer=cartSlice.reducer
 export default  cartReducer
