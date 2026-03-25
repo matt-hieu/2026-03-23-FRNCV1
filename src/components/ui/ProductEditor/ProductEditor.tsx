@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { IProduct } from "../../../interfaces/IProducts";
 import { styles } from "./ProductEditor.styles";
 
-type Props = {
+export type IProductEditorProps = {
   product: IProduct;
   onProductSaved:(produit:IProduct)=>void
 };
