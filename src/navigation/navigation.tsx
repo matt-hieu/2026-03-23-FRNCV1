@@ -3,16 +3,29 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Home from '../screens/Home'
 import Store from '../screens/Store'
+import ProductEditor, { IProductEditorProps } from '../components/ui/ProductEditor/ProductEditor'
+import { IProduct } from '../interfaces/IProducts'
 
-type Props = {}
-const Stack=createNativeStackNavigator()
-const Navigation = (props: Props) => {
+export type RootStackParams = {
+    home:undefined
+    store:undefined
+    pr:IProductEditorProps
+    "new product":undefined
+
+}
+const Stack=createNativeStackNavigator<RootStackParams>()
+const Navigation = () => {
   return (
    <Stack.Navigator initialRouteName='home' >
         <Stack.Screen name='home' component={Home} options={{
             headerShown:false,
         }}/>
         <Stack.Screen name='store' component={Store}/>
+        <Stack.Screen name='pr' component={ProductEditor}/>
+        <Stack.Screen name='new product' component={()=>{
+            const pr:IProduct={description:'',imageUrl:'',prix:2,thumbnailUrl:'',titre:'', stock:0}
+            return <ProductEditor product={pr} onProductSaved={()=>{}}/>
+        }}/>
    </Stack.Navigator>
   )
 }
