@@ -9,6 +9,7 @@ import cart from '../screens/cart'
 import CartIcon from '../components/ui/CartIcon/CartIcon.connected'
 import Banner from '../components/ui/Banner/Banner'
 import Cam from '../screens/Cam'
+import ScanIcon from '../components/ui/ScanIcon/ScanIcon'
 
 export type RootStackParams = {
     home:undefined
@@ -22,12 +23,13 @@ export type RootStackParams = {
 const Stack=createNativeStackNavigator<RootStackParams>()
 const Navigation = () => {
   return (
-   <Stack.Navigator initialRouteName='scan' >
+   <Stack.Navigator initialRouteName='home' >
         <Stack.Screen name='home' component={Home} options={{
             headerShown:false,
         }}/>
         <Stack.Screen name='store' component={Store} options={{
-            headerRight:()=><CartIcon/>,
+            headerRight:()=><View style={{flexDirection:'row', gap:10}}
+            ><ScanIcon/><CartIcon/></View>,
             headerStyle:{
                 backgroundColor:'skyblue',
             },
