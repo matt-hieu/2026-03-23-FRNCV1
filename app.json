@@ -25,6 +25,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "L'application a besoin d'accéder à la caméra pour scanner les codes-barres des produits."
+        }
+      ]
+    ]
   }
 }
