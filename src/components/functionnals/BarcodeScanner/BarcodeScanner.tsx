@@ -1,9 +1,16 @@
-import { Button, Dimensions, Modal, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Dimensions,
+  Modal,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React, { useState } from "react";
 import { CameraType, CameraView, useCameraPermissions } from "expo-camera";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store/store";
-import {searchByBarcode} from '../../../store/productsSlice'
+import { searchByBarcode } from "../../../store/productsSlice";
 import { useNavigation } from "@react-navigation/native";
 type Props = {};
 
@@ -11,9 +18,9 @@ const BarcodeScanner = (props: Props) => {
   const [facing, setFacing] = useState<CameraType>("back");
   const [permission, requestPermission] = useCameraPermissions();
   const [modalVisible, setModalVisibility] = useState<boolean>(false);
-  const [found, setFound] = useState('')
-  const d=useDispatch<AppDispatch>()
-  const nav=useNavigation()
+  const [found, setFound] = useState("");
+  const d = useDispatch<AppDispatch>();
+  const nav = useNavigation();
   return (
     <View style={{ flex: 1 }}>
       <Text>BarcodeScanner</Text>
@@ -27,13 +34,19 @@ const BarcodeScanner = (props: Props) => {
       >
         <View style={styles.centeredView}>
           <Text>BarCode Found : {found}</Text>
-          <Button title="Ok" onPress={()=>{
-            d(searchByBarcode(found))
-            //@ts-ignore
-            nav.navigate('store')
-
-          }}/>
-          <Button title="Cancel" onPress={()=>setModalVisibility(false)}/>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <Button
+              title="Ok"
+              onPress={() => {
+                d(searchByBarcode(found));
+                //@ts-ignore
+                nav.navigate("store");
+              }}
+            />
+            <Button title="Cancel" onPress={() => setModalVisibility(false)} />
+          </View>
         </View>
       </Modal>
       <CameraView
@@ -44,7 +57,7 @@ const BarcodeScanner = (props: Props) => {
         }}
         onBarcodeScanned={(evt) => {
           console.log(evt);
-          setFound(evt.data)
+          setFound(evt.data);
           setModalVisibility(true);
         }}
       />
@@ -68,7 +81,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get("screen").width,
   },
   centeredView: {
-    flex: 1,
+    height: 200,
     justifyContent: "center",
     alignItems: "center",
   },
