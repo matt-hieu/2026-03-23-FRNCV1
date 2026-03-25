@@ -9,6 +9,9 @@ store.subscribe(()=>console.trace(store.getState()))
 
 //store.dispatch(initialProductLoad(products))
 store.dispatch(loadRestAPI())
+// setInterval(()=>{
+//   store.dispatch(loadRestAPI())
+// },2000)
 
 
 
