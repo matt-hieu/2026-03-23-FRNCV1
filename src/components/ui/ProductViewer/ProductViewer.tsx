@@ -11,9 +11,10 @@ import { IProduct } from "../../../interfaces/IProducts";
 
 interface IProductViewerProps {
   product: IProduct;
+  onProductAddToCart:(prod:IProduct)=>void
 }
 
-const ProductViewer = ({ product }: IProductViewerProps) => {
+const ProductViewer = ({ product, onProductAddToCart }: IProductViewerProps) => {
   return (
     <View style={styles.ProductViewer}>
       <Text style={[styles.titre, styles.bold]}>{product.titre}</Text>
@@ -32,9 +33,11 @@ const ProductViewer = ({ product }: IProductViewerProps) => {
         </View>
         <View style={styles.colRight}>
           <Image style={styles.image} source={{ uri: product.imageUrl }} />
-          <Button title="Edition" />
         </View>
       </View>
+      <Button title="ajouter panier" onPress={()=>{
+        onProductAddToCart(product)
+      }} />
     </View>
   );
 };
