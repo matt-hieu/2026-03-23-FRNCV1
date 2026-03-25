@@ -14,7 +14,7 @@ const Home = (props: Props) => {
   return (
     <View style={styles.main}>
       <Text style={styles.titre}>Bienvenue</Text>
-      <Image source={require("images.jpeg")} style={styles.image} />
+      <Image source={require("./images.jpeg")} style={styles.image} />
       <Button color={"skyblue"} title="acceder au magasin" onPress={() => {}} />
     </View>
   );
