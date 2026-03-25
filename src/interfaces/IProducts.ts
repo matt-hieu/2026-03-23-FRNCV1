@@ -5,5 +5,6 @@ export interface IProduct{
     imageUrl:string
     thumbnailUrl:string
     stock?:number
-    prix?:number
+    prix:number
+    quant?:number
 }
