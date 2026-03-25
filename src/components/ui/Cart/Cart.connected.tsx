@@ -3,7 +3,7 @@ import React from "react";
 import CartUnconnected from "./Cart";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../store/store";
-import { addProduct } from "../../../store/cartSlice";
+import { addProduct, removeProduct } from "../../../store/cartSlice";
 
 const Cart = () => {
   const prs = useSelector((s: RootState) => s.cart.products);
@@ -15,7 +15,7 @@ const Cart = () => {
         if(undefined!==pr.quant && q>pr.quant){
             d(addProduct(pr))
         }else if(undefined!==pr.quant && q<pr.quant){
-            //d(removeProduct(pr))
+            d(removeProduct(pr))
         }
         //console.log(pr, q);
       }}

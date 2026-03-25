@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import productsReducer, { initialProductLoad, loadRestAPI } from "./productsSlice";
 //import {products} from '../../db.json'
 import cartReducer from "./cartSlice";
+
 export const store=configureStore({
   reducer:{stock:productsReducer,cart:cartReducer, demo:(s={},action)=>{console.log(action);return s;}}
 })
