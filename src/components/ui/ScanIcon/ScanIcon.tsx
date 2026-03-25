@@ -1,12 +1,16 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import { Image, StyleSheet, Text, TouchableOpacity, View, Platform } from 'react-native'
+import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
 type Props = {}
 
 const ScanIcon = (props: Props) => {
     const n=useNavigation()
+    // useEffect(() => {
+    //  console.log(Platform.constants);
+    // }, [Platform])
   return (
+    Platform.OS==="web"?null:
     <TouchableOpacity onPress={()=>{
         //@ts-ignore
         n.navigate('scan')
